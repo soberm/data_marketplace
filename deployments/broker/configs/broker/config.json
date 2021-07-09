@@ -1,0 +1,18 @@
+{
+  "host": "0.0.0.0",
+  "port": 25565,
+  "noSig": true,
+  "loggingConfig": {
+    "verbosity": 4
+  },
+  "ethConfig": {
+    "clientURL": "ws://172.17.0.1:7545",
+    "keyDir": "./tmp/keystores",
+    "account": "0x2c4D05102244d7a5F95fa85d854eDcC50d6F63df",
+    "passphrase": "12345678"
+  },
+  "contractsConfig": {
+    "productContractAddress": "0x9a882df3e9b41a221a6329485D68510e78278160",
+    "tradingContractAddress": "0xb3367Ec043eE38a04Ce60F7BdA2fD7BD822Ed76C"
+  }
+}

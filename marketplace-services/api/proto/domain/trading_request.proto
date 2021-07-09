@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message TradingRequest {
+    uint64 id = 1;
+    uint64 product = 2;
+    uint64 cost = 3;
+    uint64 startTime = 4;
+    uint64 endTime = 5;
+    string consumer = 6;
+    string broker = 7;
+}

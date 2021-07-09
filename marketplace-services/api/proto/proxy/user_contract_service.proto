@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/user.proto";
+import "domain/transaction.proto";
+import "domain/created_user_event.proto";
+import "domain/updated_user_event.proto";
+import "domain/removed_user_event.proto";
+
+message CreateUserRequest {
+    domain.User user = 1;
+}
+
+message CreateUserResponse {
+    domain.Transaction transaction = 1;
+}
+
+message UpdateUserRequest {
+    domain.User user = 1;
+}
+
+message UpdateUserResponse {
+    domain.Transaction transaction = 1;
+}
+
+message RemoveUserRequest {
+    string address = 1;
+}
+
+message RemoveUserResponse {
+    domain.Transaction transaction = 1;
+}
+
+message FindUserByIndexRequest {
+    int64 index = 1;
+}
+
+message FindUserByIndexResponse {
+    domain.User user = 1;
+}
+
+message FindUserByAddressRequest {
+    string address = 1;
+}
+
+message FindUserByAddressResponse {
+    domain.User user = 1;
+}
+
+message CountUsersRequest {
+}
+
+message CountUsersResponse {
+    int64 counter = 1;
+}
+
+message ExistsUserByAddressRequest {
+    string address = 1;
+}
+
+message ExistsUserByAddressResponse {
+    bool exists = 1;
+}
+
+message ExistsUserByAddressAndDeletedRequest {
+    string address = 1;
+    bool deleted = 2;
+}
+
+message ExistsUserByAddressAndDeletedResponse {
+    bool exists = 1;
+}
+
+message WatchCreatedUserEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchCreatedUserEventResponse {
+    domain.CreatedUserEvent event = 1;
+}
+
+message WatchUpdatedUserEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchUpdatedUserEventResponse {
+    domain.UpdatedUserEvent event = 1;
+}
+
+message WatchRemovedUserEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchRemovedUserEventResponse {
+    domain.RemovedUserEvent event = 1;
+}
+
+service UserContractService {
+    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {
+    }
+    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse) {
+    }
+    rpc RemoveUser (RemoveUserRequest) returns (RemoveUserResponse) {
+    }
+    rpc FindUserByIndex (FindUserByIndexRequest) returns (FindUserByIndexResponse) {
+    }
+    rpc FindUserByAddress (FindUserByAddressRequest) returns (FindUserByAddressResponse) {
+    }
+    rpc CountUsers (CountUsersRequest) returns (CountUsersResponse) {
+    }
+    rpc ExistsUserByAddress (ExistsUserByAddressRequest) returns (ExistsUserByAddressResponse) {
+    }
+    rpc ExistsUserByAddressAndDeleted (ExistsUserByAddressAndDeletedRequest) returns (ExistsUserByAddressAndDeletedResponse) {
+    }
+    rpc WatchCreatedUserEvent (WatchCreatedUserEventRequest) returns (stream WatchCreatedUserEventResponse) {
+    }
+    rpc WatchUpdatedUserEvent (WatchUpdatedUserEventRequest) returns (stream WatchUpdatedUserEventResponse) {
+    }
+    rpc WatchRemovedUserEvent (WatchRemovedUserEventRequest) returns (stream WatchRemovedUserEventResponse) {
+    }
+}

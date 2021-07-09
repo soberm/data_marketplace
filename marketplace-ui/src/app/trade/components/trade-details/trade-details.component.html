@@ -1,0 +1,27 @@
+<mat-card class="trade-card">
+  <mat-card-header>
+    <div mat-card-avatar class="trade-header-image"></div>
+    <mat-card-title><span matBadge="S" matBadgeOverlap="false" [matBadgeHidden]="!detail.settled">Trade</span>
+    </mat-card-title>
+    <mat-card-subtitle>{{ detail.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="trade-card-content">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <h2 class="mat-h2">Provider:</h2>
+      <div>{{ detail.provider }}</div>
+      <h2 class="mat-h2">Consumer:</h2>
+      <div>{{ detail.consumer }}</div>
+      <h2 class="mat-h2">Broker:</h2>
+      <div>{{ detail.broker }}</div>
+      <h2 class="mat-h2">Product:</h2>
+      <div>{{ detail.product }}</div>
+      <h2 class="mat-h2">Start:</h2>
+      <div>{{ detail.startTime * 1000 | date:'medium' }}</div>
+      <h2 class="mat-h2">End:</h2>
+      <div>{{ detail.endTime * 1000 | date:'medium' }}</div>
+      <h2 class="mat-h2">Cost:</h2>
+      <div>{{ detail.cost }}</div>
+    </div>
+  </mat-card-content>
+</mat-card>

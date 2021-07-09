@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message UpdatedDeviceEvent {
+    string address = 1;
+}

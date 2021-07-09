@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/bid.proto";
+import "domain/transaction.proto";
+
+message MakeBidRequest {
+    string contractAddress = 1;
+    domain.Bid bid = 2;
+}
+
+message MakeBidResponse {
+    domain.Transaction transaction = 1;
+}
+
+message AcceptLastBidRequest {
+    string contractAddress = 1;
+}
+
+message AcceptLastBidResponse {
+    domain.Transaction transaction = 1;
+}
+
+message CancelBiddingRequest {
+    string contractAddress = 1;
+}
+
+message CancelBiddingResponse {
+    domain.Transaction transaction = 1;
+}
+
+message FindBidByIndexRequest {
+    string contractAddress = 1;
+    uint64 index = 2;
+}
+
+message FindBidByIndexResponse {
+    domain.Bid bid = 1;
+}
+
+message FindLastBidRequest {
+    string contractAddress = 1;
+}
+
+message FindLastBidResponse {
+    domain.Bid bid = 1;
+}
+
+message CountBidsRequest {
+    string contractAddress = 1;
+}
+
+message CountBidsResponse {
+    uint64 counter = 1;
+}
+
+message IsLastBidAcceptedRequest {
+    string contractAddress = 1;
+}
+
+message IsLastBidAcceptedResponse {
+    bool accepted = 1;
+}
+
+message IsBiddingCanceledRequest {
+    string contractAddress = 1;
+}
+
+message IsBiddingCanceledResponse {
+    bool canceled = 1;
+}
+
+message IsBiddingActiveRequest {
+    string contractAddress = 1;
+}
+
+message IsBiddingActiveResponse {
+    bool active = 1;
+}
+
+service BiddingContractService {
+    rpc MakeBid (MakeBidRequest) returns (MakeBidResponse) {
+    }
+    rpc AcceptLastBid (AcceptLastBidRequest) returns (AcceptLastBidResponse) {
+    }
+    rpc CancelBidding (CancelBiddingRequest) returns (CancelBiddingResponse) {
+    }
+    rpc FindBidByIndex (FindBidByIndexRequest) returns (FindBidByIndexResponse) {
+    }
+    rpc FindLastBid (FindLastBidRequest) returns (FindLastBidResponse) {
+    }
+    rpc CountBids (CountBidsRequest) returns (CountBidsResponse) {
+    }
+    rpc IsLastBidAccepted (IsLastBidAcceptedRequest) returns (IsLastBidAcceptedResponse) {
+    }
+    rpc IsBiddingCanceled (IsBiddingCanceledRequest) returns (IsBiddingCanceledResponse) {
+    }
+    rpc IsBiddingActive (IsBiddingActiveRequest) returns (IsBiddingActiveResponse) {
+    }
+}

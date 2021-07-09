@@ -1,0 +1,74 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="broker-card">
+    <mat-card-header>
+      <div mat-card-avatar class="broker-header-image"></div>
+      <mat-card-title>Create Broker</mat-card-title>
+      <mat-card-subtitle>Create a new broker for the data marketplace</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form #form="ngForm" (ngSubmit)="handleSubmit(form.value, form.valid)" novalidate>
+      <mat-card-content class="broker-card-content">
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Address</mat-label>
+            <input
+              type="text"
+              name="addr"
+              required
+              #addr="ngModel"
+              ngModel
+              matInput
+              placeholder="0x0000000000000000000000000000000000000000">
+            <mat-error *ngIf="addr.errors?.required && addr.dirty">Required</mat-error>
+            <mat-icon matSuffix>public</mat-icon>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Name</mat-label>
+            <input
+              type="text"
+              name="name"
+              required
+              #name="ngModel"
+              ngModel
+              matInput
+              placeholder="Broker">
+            <mat-error *ngIf="name.errors?.required && name.dirty">Required</mat-error>
+            <mat-icon matSuffix>devices</mat-icon>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Host Address</mat-label>
+            <input
+              type="text"
+              name="hostAddr"
+              required
+              #hostAddr="ngModel"
+              ngModel
+              matInput
+              placeholder="127.0.0.1.25566">
+            <mat-icon matSuffix>description</mat-icon>
+            <mat-error *ngIf="hostAddr.errors?.required && hostAddr.dirty">"Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Location</mat-label>
+            <mat-select name="location" ngModel required>
+              <mat-option *ngFor="let location of locations; index as i" [value]="i">
+                {{location}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-error *ngIf="hostAddr.errors?.required && hostAddr.dirty">"Required</mat-error>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="broker-card-actions">
+        <button mat-button type="submit" [disabled]="form.invalid">Create</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

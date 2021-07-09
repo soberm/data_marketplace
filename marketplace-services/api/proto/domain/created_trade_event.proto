@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message CreatedTradeEvent {
+    repeated string brokers = 1;
+    uint64 tradeId = 2;
+}

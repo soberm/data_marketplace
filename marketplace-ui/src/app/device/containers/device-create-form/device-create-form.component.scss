@@ -1,0 +1,22 @@
+.device-card {
+  max-width: 800px;
+  margin: 5px;
+}
+
+.device-card-content {
+  margin-top: 20px;
+}
+
+.device-card-actions {
+  margin-bottom: 0;
+  padding-top: 20px;
+}
+
+.device-header-image {
+  background-image: url('../../../../assets/img/cpu.svg');
+  background-size: cover;
+}
+
+.device-public-key {
+  word-break: break-all;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message Device {
+    string address = 1;
+    string user = 2;
+    string name = 3;
+    string description = 4;
+    bytes publicKey = 5;
+    uint64 rating = 6;
+    bool deleted = 7;
+}

@@ -1,0 +1,64 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="device-card">
+    <mat-card-header>
+      <div mat-card-avatar class="device-header-image"></div>
+      <mat-card-title>Update Device</mat-card-title>
+      <mat-card-subtitle>Update a device for the data marketplace</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form #form="ngForm" (ngSubmit)="handleSubmit(form.value, form.valid)" novalidate>
+      <mat-card-content class="device-card-content">
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Name</mat-label>
+            <input
+              type="text"
+              name="name"
+              required
+              #name="ngModel"
+              [ngModel]="details?.name"
+              matInput
+              placeholder="IoT Device">
+            <mat-error *ngIf="name.errors?.required && name.dirty">Required</mat-error>
+            <mat-icon matSuffix>devices</mat-icon>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Description</mat-label>
+            <input
+              type="tex"
+              name="description"
+              required
+              #description="ngModel"
+              [ngModel]="details?.description"
+              matInput
+              placeholder="IoT Device providing different data streams">
+            <mat-icon matSuffix>description</mat-icon>
+            <mat-error *ngIf="description.errors?.required && description.dirty">"Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Public Key</mat-label>
+            <input
+              type="text"
+              name="publicKey"
+              required
+              #publicKey="ngModel"
+              [ngModel]="details?.publicKey"
+              matInput
+              placeholder="0f6d4a546c7d6a7b5abdded822c4fc65b93dbecf7654729f95b33df1cc46fe3e">
+            <mat-icon matSuffix>vpn_key</mat-icon>
+            <mat-error *ngIf="publicKey.errors?.required && publicKey.dirty">"Required</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="device-card-actions">
+        <button mat-button type="submit" [disabled]="form.invalid">Update</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

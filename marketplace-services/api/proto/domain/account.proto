@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+import "domain/wallet.proto";
+import "domain/role.proto";
+
+message Account {
+    uint64 id = 1;
+    string name = 2;
+    bytes password = 3;
+    Role role = 4;
+    Wallet wallet = 5;
+}

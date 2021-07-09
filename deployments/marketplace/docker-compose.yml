@@ -1,0 +1,8 @@
+version: '3.1'
+services:
+  marketplace-ui:
+    image: marketplace-ui
+    restart: always
+    container_name: marketplace-ui
+    ports:
+      - 8081:80

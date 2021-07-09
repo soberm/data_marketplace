@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message DepositedEvent {
+    string payee = 1;
+    uint64 amount = 2;
+}

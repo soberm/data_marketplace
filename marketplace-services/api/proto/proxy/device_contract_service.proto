@@ -1,0 +1,184 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/device.proto";
+import "domain/transaction.proto";
+import "domain/created_device_event.proto";
+import "domain/updated_device_event.proto";
+import "domain/removed_device_event.proto";
+
+message CreateDeviceRequest {
+    domain.Device device = 1;
+}
+
+message CreateDeviceResponse {
+    domain.Transaction transaction = 1;
+}
+
+message UpdateDeviceRequest {
+    domain.Device device = 1;
+}
+
+message UpdateDeviceResponse {
+    domain.Transaction transaction = 1;
+}
+
+message RemoveDeviceRequest {
+    string address = 1;
+}
+
+message RemoveDeviceResponse {
+    domain.Transaction transaction = 1;
+}
+
+message FindDeviceByIndexRequest {
+    int64 index = 1;
+}
+
+message FindDeviceByIndexResponse {
+    domain.Device device = 1;
+}
+
+message FindDeviceByAddressRequest {
+    string address = 1;
+}
+
+message FindDeviceByAddressResponse {
+    domain.Device device = 1;
+}
+
+message FindProductsOfDeviceByAddressRequest {
+    string address = 1;
+}
+
+message FindProductsOfDeviceByAddressResponse {
+    repeated int64 products = 1;
+}
+
+message FindNegotiationRequestsOfDeviceByAddressRequest {
+    string address = 1;
+}
+
+message FindNegotiationRequestsOfDeviceByAddressResponse {
+    repeated int64 negotiationRequests = 1;
+}
+
+message FindTradingRequestsOfDeviceByAddressRequest {
+    string address = 1;
+}
+
+message FindTradingRequestsOfDeviceByAddressResponse {
+    repeated int64 tradingRequests = 1;
+}
+
+message FindNegotiationsOfDeviceByAddressRequest {
+    string address = 1;
+}
+
+message FindNegotiationsOfDeviceByAddressResponse {
+    repeated int64 negotiations = 1;
+}
+
+message FindTradesOfDeviceByAddressRequest {
+    string address = 1;
+}
+
+message FindTradesOfDeviceByAddressResponse {
+    repeated int64 trades = 1;
+}
+
+message CountDevicesRequest {
+}
+
+message CountDevicesResponse {
+    int64 counter = 1;
+}
+
+message IsDeviceOwnedByUserRequest {
+    string address = 1;
+    string user = 2;
+}
+
+message IsDeviceOwnedByUserResponse {
+    bool owned = 1;
+}
+
+message ExistsDeviceByAddressRequest {
+    string address = 1;
+}
+
+message ExistsDeviceByAddressResponse {
+    bool exists = 1;
+}
+
+message ExistsDeviceByAddressAndDeletedRequest {
+    string address = 1;
+    bool deleted = 2;
+}
+
+message ExistsDeviceByAddressAndDeletedResponse {
+    bool exists = 1;
+}
+
+message WatchCreatedDeviceEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchCreatedDeviceEventResponse {
+    domain.CreatedDeviceEvent event = 1;
+}
+
+message WatchUpdatedDeviceEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchUpdatedDeviceEventResponse {
+    domain.UpdatedDeviceEvent event = 1;
+}
+
+message WatchRemovedDeviceEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchRemovedDeviceEventResponse {
+    domain.RemovedDeviceEvent event = 1;
+}
+
+service DeviceContractService {
+    rpc CreateDevice (CreateDeviceRequest) returns (CreateDeviceResponse) {
+    }
+    rpc UpdateDevice (UpdateDeviceRequest) returns (UpdateDeviceResponse) {
+    }
+    rpc RemoveDevice (RemoveDeviceRequest) returns (RemoveDeviceResponse) {
+    }
+    rpc FindDeviceByIndex (FindDeviceByIndexRequest) returns (FindDeviceByIndexResponse) {
+    }
+    rpc FindDeviceByAddress (FindDeviceByAddressRequest) returns (FindDeviceByAddressResponse) {
+    }
+    rpc FindProductsOfDeviceByAddress (FindProductsOfDeviceByAddressRequest) returns (FindProductsOfDeviceByAddressResponse) {
+    }
+    rpc FindNegotiationRequestsOfDeviceByAddress (FindNegotiationRequestsOfDeviceByAddressRequest) returns (FindNegotiationRequestsOfDeviceByAddressResponse) {
+    }
+    rpc FindTradingRequestsOfDeviceByAddress (FindTradingRequestsOfDeviceByAddressRequest) returns (FindTradingRequestsOfDeviceByAddressResponse) {
+    }
+    rpc FindNegotiationsOfDeviceByAddress (FindNegotiationsOfDeviceByAddressRequest) returns (FindNegotiationsOfDeviceByAddressResponse) {
+    }
+    rpc FindTradesOfDeviceByAddress (FindTradesOfDeviceByAddressRequest) returns (FindTradesOfDeviceByAddressResponse) {
+    }
+    rpc IsDeviceOwnedByUser (IsDeviceOwnedByUserRequest) returns (IsDeviceOwnedByUserResponse) {
+    }
+    rpc CountDevices (CountDevicesRequest) returns (CountDevicesResponse) {
+    }
+    rpc ExistsDeviceByAddress (ExistsDeviceByAddressRequest) returns (ExistsDeviceByAddressResponse) {
+    }
+    rpc ExistsDeviceByAddressAndDeleted (ExistsDeviceByAddressAndDeletedRequest) returns (ExistsDeviceByAddressAndDeletedResponse) {
+    }
+    rpc WatchCreatedDeviceEvent (WatchCreatedDeviceEventRequest) returns (stream WatchCreatedDeviceEventResponse) {
+    }
+    rpc WatchUpdatedDeviceEvent (WatchUpdatedDeviceEventRequest) returns (stream WatchUpdatedDeviceEventResponse) {
+    }
+    rpc WatchRemovedDeviceEvent (WatchRemovedDeviceEventRequest) returns (stream WatchRemovedDeviceEventResponse) {
+    }
+}

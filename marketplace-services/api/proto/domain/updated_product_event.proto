@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message UpdatedProductEvent {
+    uint64 id = 1;
+    string user = 2;
+}

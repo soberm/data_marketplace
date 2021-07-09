@@ -1,0 +1,72 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="user-card">
+    <mat-card-header>
+      <div mat-card-avatar class="user-header-image"></div>
+      <mat-card-title>Create User</mat-card-title>
+      <mat-card-subtitle>Create a new user profile for the data marketplace</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form #form="ngForm" (ngSubmit)="handleSubmit(form.value, form.valid)" novalidate>
+      <mat-card-content class="user-card-content">
+        <div flexLayout="row" fxLayoutGap="25px">
+          <mat-form-field fxFlex="calc(50% - 25px)">
+            <mat-label>First name</mat-label>
+            <input
+              type="text"
+              name="firstName"
+              required
+              #firstName="ngModel"
+              ngModel
+              matInput
+              placeholder="Max">
+            <mat-error *ngIf="firstName.errors?.required && firstName.dirty">Required</mat-error>
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(50% - 25px)">
+            <mat-label>Last name</mat-label>
+            <input
+              type="text"
+              name="lastName"
+              required
+              #lastName="ngModel"
+              ngModel
+              matInput
+              placeholder="Mustermann">
+            <mat-error *ngIf="lastName.errors?.required && lastName.dirty">"Required</mat-error>
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Company</mat-label>
+            <input
+              type="text"
+              name="company"
+              #company="ngModel"
+              ngModel
+              matInput
+              placeholder="Mustermann GmbH">
+            <mat-icon matSuffix>business</mat-icon>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>E-Mail</mat-label>
+            <input
+              type="text"
+              name="email"
+              required
+              #email="ngModel"
+              ngModel
+              matInput placeholder="max.mustermann@email.com">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="email.errors?.required && email.dirty">"Required</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="user-card-actions">
+        <button mat-button type="submit" [disabled]="form.invalid">Create</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

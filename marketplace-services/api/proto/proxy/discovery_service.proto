@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/broker.proto";
+import "domain/product.proto";
+import "domain/product_search_query.proto";
+import "domain/broker_search_query.proto";
+
+message SearchBrokerRequest {
+    domain.BrokerSearchQuery query = 1;
+}
+
+message SearchBrokerResponse {
+    domain.Broker broker = 1;
+}
+
+message SearchProductWithBrokerRequest {
+    string brokerAddr = 1;
+    domain.ProductSearchQuery query = 2;
+}
+
+message SearchProductWithBrokerResponse {
+    domain.Product product = 1;
+}
+
+service DiscoveryService {
+    rpc SearchBroker (SearchBrokerRequest) returns (stream SearchBrokerResponse) {
+    }
+    rpc SearchProductWithBroker (SearchProductWithBrokerRequest) returns (stream SearchProductWithBrokerResponse) {
+    }
+}

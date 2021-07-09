@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+enum Role {
+    UNSPECIFIED = 0;
+    ADMIN = 1;
+    USER = 2;
+}

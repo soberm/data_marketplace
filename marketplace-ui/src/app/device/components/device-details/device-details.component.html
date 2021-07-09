@@ -1,0 +1,20 @@
+<mat-card class="device-card">
+  <mat-card-header>
+    <div mat-card-avatar class="device-header-image"></div>
+    <mat-card-title>{{ detail.name }}</mat-card-title>
+    <mat-card-subtitle>{{ detail.addr }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="device-card-content">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <h2 class="mat-h2">User:</h2>
+      <div>{{ detail.user }}</div>
+      <h2 class="mat-h2">Rating:</h2>
+      <div>{{ detail.rating }}</div>
+      <h2 class="mat-h2">Description:</h2>
+      <div>{{ detail.description }}</div>
+      <h2 class="mat-h2">Public Key:</h2>
+      <div class="device-public-key">{{ detail.publicKey }}</div>
+    </div>
+  </mat-card-content>
+</mat-card>

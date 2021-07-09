@@ -1,0 +1,186 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/product.proto";
+import "domain/transaction.proto";
+import "domain/created_product_event.proto";
+import "domain/updated_product_event.proto";
+import "domain/removed_product_event.proto";
+
+message CreateProductRequest {
+    domain.Product product = 1;
+}
+
+message CreateProductResponse {
+    domain.Transaction transaction = 1;
+}
+
+message UpdateProductRequest {
+    domain.Product product = 1;
+}
+
+message UpdateProductResponse {
+    domain.Transaction transaction = 1;
+}
+
+message RemoveProductRequest {
+    int64 id = 1;
+}
+
+message RemoveProductResponse {
+    domain.Transaction transaction = 1;
+}
+
+message FindProductByIndexRequest {
+    int64 index = 1;
+}
+
+message FindProductByIndexResponse {
+    domain.Product product = 1;
+}
+
+message FindProductByIdRequest {
+    int64 id = 1;
+}
+
+message FindProductByIdResponse {
+    domain.Product product = 1;
+}
+
+message FindNegotiationRequestsOfProductByIdRequest {
+    int64 id = 1;
+}
+
+message FindNegotiationRequestsOfProductByIdResponse {
+    repeated int64 negotiationRequests = 1;
+}
+
+message FindTradingRequestsOfProductByIdRequest {
+    int64 id = 1;
+}
+
+message FindTradingRequestsOfProductByIdResponse {
+    repeated int64 tradingRequests = 1;
+}
+
+message FindNegotiationsOfProductByIdRequest {
+    int64 id = 1;
+}
+
+message FindNegotiationsOfProductByIdResponse {
+    repeated int64 negotiations = 1;
+}
+
+message FindTradesOfProductByIdRequest {
+    int64 id = 1;
+}
+
+message FindTradesOfProductByIdResponse {
+    repeated int64 trades = 1;
+}
+
+message FindCostOfProductByIdRequest {
+    int64 id = 1;
+}
+
+message FindCostOfProductByIdResponse {
+    int64 cost = 1;
+}
+
+message IsProductOwnedByDeviceRequest {
+    int64 id = 1;
+    string device = 2;
+}
+
+message IsProductOwnedByDeviceResponse {
+    bool owned = 1;
+}
+
+message CountProductsRequest {
+}
+
+message CountProductsResponse {
+    int64 counter = 1;
+}
+
+message ExistsProductByIdRequest {
+    int64 id = 1;
+}
+
+message ExistsProductByIdResponse {
+    bool exists = 1;
+}
+
+message ExistsProductByIdAndDeletedRequest {
+    int64 id = 1;
+    bool deleted = 2;
+}
+
+message ExistsProductByIdAndDeletedResponse {
+    bool exists = 1;
+}
+
+message WatchCreatedProductEventRequest {
+    repeated string users = 1;
+}
+
+message WatchCreatedProductEventResponse {
+    domain.CreatedProductEvent event = 1;
+}
+
+message WatchUpdatedProductEventRequest {
+    repeated uint64 ids = 1;
+    repeated string users = 2;
+}
+
+message WatchUpdatedProductEventResponse {
+    domain.UpdatedProductEvent event = 1;
+}
+
+message WatchRemovedProductEventRequest {
+    repeated uint64 ids = 1;
+    repeated string users = 2;
+}
+
+message WatchRemovedProductEventResponse {
+    domain.RemovedProductEvent event = 1;
+}
+
+service ProductContractService {
+    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse) {
+    }
+    rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse) {
+    }
+    rpc RemoveProduct (RemoveProductRequest) returns (RemoveProductResponse) {
+    }
+    rpc FindProductByIndex (FindProductByIndexRequest) returns (FindProductByIndexResponse) {
+    }
+    rpc FindProductById (FindProductByIdRequest) returns (FindProductByIdResponse) {
+    }
+    rpc FindNegotiationRequestsOfProductById (FindNegotiationRequestsOfProductByIdRequest) returns (FindNegotiationRequestsOfProductByIdResponse) {
+    }
+    rpc FindTradingRequestsOfProductById (FindTradingRequestsOfProductByIdRequest) returns (FindTradingRequestsOfProductByIdResponse) {
+    }
+    rpc FindNegotiationsOfProductById (FindNegotiationsOfProductByIdRequest) returns (FindNegotiationsOfProductByIdResponse) {
+    }
+    rpc FindTradesOfProductById (FindTradesOfProductByIdRequest) returns (FindTradesOfProductByIdResponse) {
+    }
+    rpc FindCostOfProductById (FindCostOfProductByIdRequest) returns (FindCostOfProductByIdResponse) {
+    }
+    rpc IsProductOwnedByDevice (IsProductOwnedByDeviceRequest) returns (IsProductOwnedByDeviceResponse) {
+    }
+    rpc CountProducts (CountProductsRequest) returns (CountProductsResponse) {
+    }
+    rpc ExistsProductById (ExistsProductByIdRequest) returns (ExistsProductByIdResponse) {
+    }
+    rpc ExistsProductByIdAndDeleted (ExistsProductByIdAndDeletedRequest) returns (ExistsProductByIdAndDeletedResponse) {
+    }
+    rpc WatchCreatedProductEvent (WatchCreatedProductEventRequest) returns (stream WatchCreatedProductEventResponse) {
+    }
+    rpc WatchUpdatedProductEvent (WatchUpdatedProductEventRequest) returns (stream WatchUpdatedProductEventResponse) {
+    }
+    rpc WatchRemovedProductEvent (WatchRemovedProductEventRequest) returns (stream WatchRemovedProductEventResponse) {
+    }
+}

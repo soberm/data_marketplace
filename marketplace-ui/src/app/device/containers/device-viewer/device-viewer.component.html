@@ -1,0 +1,7 @@
+<div fxLayout="row wrap" fxLayoutAlign="start center">
+  <app-device-details
+    fxFlex="0 1 calc(33.3%)"
+    *ngFor="let device of devices;"
+    [detail]="device">
+  </app-device-details>
+</div>

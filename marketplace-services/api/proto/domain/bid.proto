@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message Bid {
+    uint64 price = 1;
+    uint64 startTime = 2;
+    uint64 endTime = 3;
+}

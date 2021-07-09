@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message DisputeEvent {
+    uint64 providerCounter = 1;
+    uint64 consumerCounter = 2;
+}

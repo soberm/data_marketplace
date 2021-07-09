@@ -1,0 +1,31 @@
+<mat-card class="product-card">
+  <mat-card-header>
+    <div mat-card-avatar class="product-header-image"></div>
+    <mat-card-title>{{ detail.name }}</mat-card-title>
+    <mat-card-subtitle>{{ detail.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="product-card-content">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <h2 class="mat-h2">Device:</h2>
+      <div>{{ detail.device }}</div>
+      <h2 class="mat-h2">Description:</h2>
+      <div>{{ detail.description }}</div>
+      <h2 class="mat-h2">DataType:</h2>
+      <div>{{ detail.dataType }}</div>
+      <h2 class="mat-h2">Frequency:</h2>
+      <div>{{ detail.frequency }}</div>
+      <h2 class="mat-h2">Cost:</h2>
+      <div>{{ detail.cost }}</div>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <a matTooltip="Update product" mat-icon-button aria-label="Update product" [routerLink]="'update/' + detail.id">
+      <mat-icon>update</mat-icon>
+    </a>
+    <button (click)="handleDelete(detail)" matTooltip="Delete product" mat-icon-button aria-label="Delete product">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

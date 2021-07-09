@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/transaction.proto";
+import "domain/trade.proto";
+import "domain/trading_request.proto";
+import "domain/requested_trading_event.proto";
+import "domain/accepted_trading_request_event.proto";
+import "domain/declined_trading_request_event.proto";
+
+message RequestTradingRequest {
+    uint64 product = 1;
+    string broker = 2;
+    uint64 startTime = 3;
+    uint64 endTime = 4;
+}
+
+message RequestTradingResponse {
+    domain.Transaction transaction = 1;
+}
+
+message AcceptTradingRequestRequest {
+    uint64 id = 1;
+}
+
+message AcceptTradingRequestResponse {
+    domain.Transaction transaction = 1;
+}
+
+message DeclineTradingRequestRequest {
+    uint64 id = 1;
+}
+
+message DeclineTradingRequestResponse {
+    domain.Transaction transaction = 1;
+}
+
+message CreateTradeRequest {
+    uint64 negotiation = 1;
+    string broker = 2;
+}
+
+message CreateTradeResponse {
+    domain.Transaction transaction = 1;
+}
+
+message FindTradingRequestByIndexRequest {
+    uint64 index = 1;
+}
+
+message FindTradingRequestByIndexResponse {
+    domain.TradingRequest request = 1;
+}
+
+message FindTradeByIndexRequest {
+    uint64 index = 1;
+}
+
+message FindTradeByIndexResponse {
+    domain.Trade trade = 1;
+}
+
+message FindTradingRequestByIdRequest {
+    uint64 id = 1;
+}
+
+message FindTradingRequestByIdResponse {
+    domain.TradingRequest request = 1;
+}
+
+message FindTradeByIdRequest {
+    uint64 id = 1;
+}
+
+message FindTradeByIdResponse {
+    domain.Trade trade = 1;
+}
+
+message CountTradingRequestsRequest {
+}
+
+message CountTradingRequestsResponse {
+    uint64 counter = 1;
+}
+
+message CountTradesRequest {
+}
+
+message CountTradesResponse {
+    uint64 counter = 1;
+}
+
+message WatchRequestedTradingEventRequest {
+    repeated string requesters = 1;
+    repeated uint64 products = 2;
+}
+
+message WatchRequestedTradingEventResponse {
+    domain.RequestedTradingEvent event = 1;
+}
+
+message WatchAcceptedTradingRequestEventRequest {
+    repeated uint64 ids = 1;
+}
+
+message WatchAcceptedTradingRequestEventResponse {
+    domain.AcceptedTradingRequestEvent event = 1;
+}
+
+message WatchDeclinedTradingRequestEventRequest {
+    repeated uint64 ids = 1;
+}
+
+message WatchDeclinedTradingRequestEventResponse {
+    domain.DeclinedTradingRequestEvent event = 1;
+}
+
+service TradingContractService {
+    rpc RequestTrading (RequestTradingRequest) returns (RequestTradingResponse) {
+    }
+    rpc AcceptTradingRequest (AcceptTradingRequestRequest) returns (AcceptTradingRequestResponse) {
+    }
+    rpc DeclineTradingRequest (DeclineTradingRequestRequest) returns (DeclineTradingRequestResponse) {
+    }
+    rpc CreateTrade (CreateTradeRequest) returns (CreateTradeResponse) {
+    }
+    rpc FindTradingRequestByIndex (FindTradingRequestByIndexRequest) returns (FindTradingRequestByIndexResponse) {
+    }
+    rpc FindTradeByIndex (FindTradeByIndexRequest) returns (FindTradeByIndexResponse) {
+    }
+    rpc FindTradingRequestById (FindTradingRequestByIdRequest) returns (FindTradingRequestByIdResponse) {
+    }
+    rpc FindTradeById (FindTradeByIdRequest) returns (FindTradeByIdResponse) {
+    }
+    rpc CountTradingRequests (CountTradingRequestsRequest) returns (CountTradingRequestsResponse) {
+    }
+    rpc CountTrades (CountTradesRequest) returns (CountTradesResponse) {
+    }
+    rpc WatchRequestedTradingEvent (WatchRequestedTradingEventRequest) returns (stream WatchRequestedTradingEventResponse) {
+    }
+    rpc WatchAcceptedTradingRequestEvent (WatchAcceptedTradingRequestEventRequest) returns (stream WatchAcceptedTradingRequestEventResponse) {
+    }
+    rpc WatchDeclinedTradingRequestEvent (WatchDeclinedTradingRequestEventRequest) returns (stream WatchDeclinedTradingRequestEventResponse) {
+    }
+}

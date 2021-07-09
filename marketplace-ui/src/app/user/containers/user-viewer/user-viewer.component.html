@@ -1,0 +1,7 @@
+<div fxLayout="row wrap" fxLayoutAlign="start center">
+  <app-user-details
+    fxFlex="0 1 calc(33.3%)"
+    *ngFor="let user of users;"
+    [detail]="user">
+  </app-user-details>
+</div>

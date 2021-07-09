@@ -1,0 +1,16 @@
+<div class="container mat-app-background">
+  <mat-toolbar color="primary">
+    <span>Decentralized IoT Data Marketplace</span>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/users/viewer'"> Users </a>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/devices/viewer'"> Devices </a>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/brokers/viewer'"> Brokers </a>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/products/viewer'"> Products </a>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/trades'"> Trades </a>
+    <span class="filler"></span>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/products/management'"> My Products </a>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/brokers/management'"> My Brokers </a>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/devices/management'"> My Devices </a>
+    <a mat-button routerLinkActive="mat-accent" [routerLink]="'/users/management'"> My Profile </a>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>

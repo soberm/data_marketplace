@@ -1,0 +1,11 @@
+{
+  "name": "marketplace-contracts",
+  "version": "1.0.0",
+  "dependencies": {
+    "assertion-error": "latest",
+    "openzeppelin-solidity": "^2.4.0",
+    "truffle-assertions": "latest",
+    "truffle-hdwallet-provider": "^1.0.17",
+    "web3": "^1.2.5-rc.0"
+  }
+}

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message CounterSetEvent {
+    string setter = 1;
+    uint64 counter = 2;
+}

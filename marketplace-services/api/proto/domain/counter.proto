@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message Counter {
+    uint64 value = 1;
+    bool set = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+import "domain/location.proto";
+
+message BrokerSearchQuery {
+    string name = 1;
+    repeated Location locations = 2;
+}

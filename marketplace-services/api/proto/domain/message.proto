@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message Message {
+    uint64 tradeId = 1;
+    bytes payload = 2;
+}

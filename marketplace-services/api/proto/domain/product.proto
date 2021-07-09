@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message Product {
+    int64 id = 1;
+    string device = 2;
+    string name = 3;
+    string description = 4;
+    string dataType = 5;
+    int64 frequency = 6;
+    int64 cost = 7;
+    bool deleted = 8;
+}

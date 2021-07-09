@@ -1,0 +1,16 @@
+<mat-card class="account-card">
+  <mat-card-header>
+    <div mat-card-avatar class="account-header-image"></div>
+    <mat-card-title>{{ detail.name }}</mat-card-title>
+    <mat-card-subtitle>{{ detail.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="device-card-content">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <h2 class="mat-h2">Address:</h2>
+      <div>{{ detail.wallet?.address | hex }}</div>
+      <h2 class="mat-h2">Public Key:</h2>
+      <div class="account-public-key">{{ detail.wallet?.publickey | hex }}</div>
+    </div>
+  </mat-card-content>
+</mat-card>

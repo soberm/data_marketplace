@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package broker;
+option go_package = "marketplace-services/pkg/broker/api";
+
+import "domain/product.proto";
+import "domain/product_search_query.proto";
+
+message SearchProductRequest {
+    domain.ProductSearchQuery query = 1;
+}
+
+message SearchProductResponse {
+    domain.Product product = 1;
+}
+
+service DiscoveryService {
+    rpc SearchProduct (SearchProductRequest) returns (stream SearchProductResponse) {
+    }
+}

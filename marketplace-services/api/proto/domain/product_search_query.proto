@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message ProductSearchQuery {
+    string dataType = 1;
+    uint64 minCost = 2;
+    uint64 maxCost = 3;
+    uint64 minFrequency = 4;
+    uint64 maxFrequency = 5;
+}

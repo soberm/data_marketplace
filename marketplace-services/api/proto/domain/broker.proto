@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+import "domain/location.proto";
+
+message Broker {
+    string address = 1;
+    string user = 2;
+    string name = 3;
+    string hostAddr = 4;
+    Location location = 5;
+    bool deleted = 6;
+    repeated int64 trades = 7;
+}

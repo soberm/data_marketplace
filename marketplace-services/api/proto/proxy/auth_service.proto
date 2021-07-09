@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+message GetTokenRequest {
+    string username = 1;
+    bytes password = 2;
+}
+
+message GetTokenResponse {
+    string token = 1;
+}
+
+service AuthService {
+    rpc GetToken (GetTokenRequest) returns (GetTokenResponse) {
+    }
+}

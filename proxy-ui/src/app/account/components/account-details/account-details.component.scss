@@ -1,0 +1,17 @@
+.account-card {
+  max-width: 600px;
+  margin: 5px;
+}
+
+.account-card-content {
+  margin-top: 20px;
+}
+
+.account-header-image {
+  background-image: url('../../../../assets/img/user.svg');
+  background-size: cover;
+}
+
+.account-public-key {
+  word-break: break-all;
+}

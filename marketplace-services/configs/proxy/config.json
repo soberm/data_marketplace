@@ -1,0 +1,28 @@
+{
+  "appName": "proxy",
+  "host": "0.0.0.0",
+  "port": 25566,
+  "noSig": true,
+  "loggingConfig": {
+    "verbosity": 4
+  },
+  "databaseConfig": {
+    "source": "./tmp/proxy.db"
+  },
+  "authConfig": {
+    "signingKey": "qwUyQF0htT",
+    "tokenExpirationTime": 86400
+  },
+  "ethConfig": {
+    "clientURL": "ws://172.17.0.1:7545",
+    "keyDir": "./tmp/keystores"
+  },
+  "contractsConfig": {
+    "userContractAddress": "0x21f2a557A41F5559900F68FF0029df3D9Ae3A4a3",
+    "deviceContractAddress": "0xb44B2C547a4E23aC6D0A338c4a4404621F76c809",
+    "brokerContractAddress": "0x93c92BBFd3Ab12eDeAc1747d751534bb38367C41",
+    "productContractAddress": "0xc4BcA7887FB01480e7d62B4c89fCf01A28C7f676",
+    "negotiationContractAddress": "0xa4e59b4D331Bc88E0296aeb12bB67AD39FC1D4Cd",
+    "tradingContractAddress": "0x6C3Eb8c7F516DbDdbf013a4F66baD4920d23B0D0"
+  }
+}

@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/transaction.proto";
+import "domain/negotiation.proto";
+import "domain/negotiation_request.proto";
+import "domain/requested_negotiation_event.proto";
+import "domain/accepted_negotiation_request_event.proto";
+import "domain/declined_negotiation_request_event.proto";
+
+message RequestNegotiationRequest {
+    uint64 product = 1;
+}
+
+message RequestNegotiationResponse {
+    domain.Transaction transaction = 1;
+}
+
+message AcceptNegotiationRequestRequest {
+    uint64 id = 1;
+}
+
+message AcceptNegotiationRequestResponse {
+    domain.Transaction transaction = 1;
+}
+
+message DeclineNegotiationRequestRequest {
+    uint64 id = 1;
+}
+
+message DeclineNegotiationRequestResponse {
+    domain.Transaction transaction = 1;
+}
+
+message FindNegotiationRequestByIndexRequest {
+    uint64 index = 1;
+}
+
+message FindNegotiationRequestByIndexResponse {
+    domain.NegotiationRequest request = 1;
+}
+
+message FindNegotiationByIndexRequest {
+    uint64 index = 1;
+}
+
+message FindNegotiationByIndexResponse {
+    domain.Negotiation negotiation = 1;
+}
+
+message FindNegotiationRequestByIdRequest {
+    uint64 id = 1;
+}
+
+message FindNegotiationRequestByIdResponse {
+    domain.NegotiationRequest request = 1;
+}
+
+message FindNegotiationByIdRequest {
+    uint64 id = 1;
+}
+
+message FindNegotiationByIdResponse {
+    domain.Negotiation negotiation = 1;
+}
+
+message CountNegotiationRequestsRequest {
+}
+
+message CountNegotiationRequestsResponse {
+    uint64 counter = 1;
+}
+
+message CountNegotiationsRequest {
+}
+
+message CountNegotiationsResponse {
+    uint64 counter = 1;
+}
+
+message ExistsNegotiationRequestByIdRequest {
+    uint64 id = 1;
+}
+
+message ExistsNegotiationRequestByIdResponse {
+    bool exists = 1;
+}
+
+message ExistsNegotiationByIdRequest {
+    uint64 id = 1;
+}
+
+message ExistsNegotiationByIdResponse {
+    bool exists = 1;
+}
+
+message WatchRequestedNegotiationEventRequest {
+    repeated string requesters = 1;
+    repeated uint64 products = 2;
+}
+
+message WatchRequestedNegotiationEventResponse {
+    domain.RequestedNegotiationEvent event = 1;
+}
+
+message WatchAcceptedNegotiationRequestEventRequest {
+    repeated uint64 ids = 1;
+}
+
+message WatchAcceptedNegotiationRequestEventResponse {
+    domain.AcceptedNegotiationRequestEvent event = 1;
+}
+
+message WatchDeclinedNegotiationRequestEventRequest {
+    repeated uint64 ids = 1;
+}
+
+message WatchDeclinedNegotiationRequestEventResponse {
+    domain.DeclinedNegotiationRequestEvent event = 1;
+}
+
+service NegotiationContractService {
+    rpc RequestNegotiation (RequestNegotiationRequest) returns (RequestNegotiationResponse) {
+    }
+    rpc AcceptNegotiationRequest (AcceptNegotiationRequestRequest) returns (AcceptNegotiationRequestResponse) {
+    }
+    rpc DeclineNegotiationRequest (DeclineNegotiationRequestRequest) returns (DeclineNegotiationRequestResponse) {
+    }
+    rpc FindNegotiationRequestByIndex (FindNegotiationRequestByIndexRequest) returns (FindNegotiationRequestByIndexResponse) {
+    }
+    rpc FindNegotiationByIndex (FindNegotiationByIndexRequest) returns (FindNegotiationByIndexResponse) {
+    }
+    rpc FindNegotiationRequestById (FindNegotiationRequestByIdRequest) returns (FindNegotiationRequestByIdResponse) {
+    }
+    rpc FindNegotiationById (FindNegotiationByIdRequest) returns (FindNegotiationByIdResponse) {
+    }
+    rpc CountNegotiationRequests (CountNegotiationRequestsRequest) returns (CountNegotiationRequestsResponse) {
+    }
+    rpc CountNegotiations (CountNegotiationsRequest) returns (CountNegotiationsResponse) {
+    }
+    rpc ExistsNegotiationRequestById (ExistsNegotiationRequestByIdRequest) returns (ExistsNegotiationRequestByIdResponse) {
+    }
+    rpc ExistsNegotiationById (ExistsNegotiationByIdRequest) returns (ExistsNegotiationByIdResponse) {
+    }
+    rpc WatchRequestedNegotiationEvent (WatchRequestedNegotiationEventRequest) returns (stream WatchRequestedNegotiationEventResponse) {
+    }
+    rpc WatchAcceptedNegotiationRequestEvent (WatchAcceptedNegotiationRequestEventRequest) returns (stream WatchAcceptedNegotiationRequestEventResponse) {
+    }
+    rpc WatchDeclinedNegotiationRequestEvent (WatchDeclinedNegotiationRequestEventRequest) returns (stream WatchDeclinedNegotiationRequestEventResponse) {
+    }
+}

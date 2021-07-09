@@ -1,0 +1,95 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="product-card">
+    <mat-card-header>
+      <div mat-card-avatar class="product-header-image"></div>
+      <mat-card-title>Update Product</mat-card-title>
+      <mat-card-subtitle>Update a product for the data marketplace</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form #form="ngForm" (ngSubmit)="handleSubmit(form.value, form.valid)" novalidate>
+      <mat-card-content class="product-card-content">
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Name</mat-label>
+            <input
+              type="text"
+              name="name"
+              required
+              #name="ngModel"
+              [ngModel]="details?.name"
+              matInput
+              placeholder="IoT Device">
+            <mat-error *ngIf="name.errors?.required && name.dirty">Required</mat-error>
+            <mat-icon matSuffix>shopping_cart</mat-icon>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Description</mat-label>
+            <input
+              type="text"
+              name="description"
+              required
+              #description="ngModel"
+              [ngModel]="details?.description"
+              matInput
+              placeholder="IoT Device providing different data streams">
+            <mat-icon matSuffix>description</mat-icon>
+            <mat-error *ngIf="description.errors?.required && description.dirty">"Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Datatype</mat-label>
+            <input
+              type="text"
+              name="dataType"
+              required
+              #dataType="ngModel"
+              [ngModel]="details?.dataType"
+              matInput
+              placeholder="datatype">
+            <mat-icon matSuffix>title</mat-icon>
+            <mat-error *ngIf="dataType.errors?.required && dataType.dirty">"Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Frequency</mat-label>
+            <input
+              type="number"
+              name="frequency"
+              required
+              min="1"
+              #frequency="ngModel"
+              [ngModel]="details?.frequency"
+              matInput
+              placeholder="1">
+            <mat-icon matSuffix>show_chart</mat-icon>
+            <mat-error *ngIf="frequency.errors?.required && frequency.dirty">"Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div flexLayout="row">
+          <mat-form-field fxFlexFill>
+            <mat-label>Cost</mat-label>
+            <input
+              type="number"
+              name="cost"
+              required
+              min="0"
+              #cost="ngModel"
+              [ngModel]="details?.cost"
+              matInput
+              placeholder="0">
+            <mat-icon matSuffix>monetization_on</mat-icon>
+            <mat-error *ngIf="cost.errors?.required && cost.dirty">"Required</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="product-card-actions">
+        <button mat-button type="submit" [disabled]="form.invalid">Update</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

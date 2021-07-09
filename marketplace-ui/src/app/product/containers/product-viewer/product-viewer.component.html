@@ -1,0 +1,7 @@
+<div fxLayout="row wrap" fxLayoutAlign="start center">
+  <app-product-details
+    fxFlex="0 1 calc(33.3%)"
+    *ngFor="let product of products;"
+    [detail]="product">
+  </app-product-details>
+</div>

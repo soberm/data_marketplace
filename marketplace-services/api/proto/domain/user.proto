@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message User {
+    string address = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string company = 4;
+    string email = 5;
+    bool deleted = 6;
+    repeated string brokers = 7;
+    repeated string devices = 8;
+}

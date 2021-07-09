@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message SettledEvent {
+    uint64 actualCost = 1;
+    uint64 provider = 2;
+    uint64 consumer = 3;
+    uint64 broker = 4;
+}

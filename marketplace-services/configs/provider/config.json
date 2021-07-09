@@ -1,0 +1,43 @@
+{
+  "proxyConfig": {
+    "address": "localhost",
+    "port": 25566,
+    "username": "kristina",
+    "password": "12345678"
+  },
+  "loggingConfig": {
+    "verbosity": 4
+  },
+  "simulationConfig": {
+    "simulatorConfigs": [
+      {
+        "id": 1,
+        "min": 0,
+        "max": 100,
+        "frequency": 10,
+        "timeout": 0
+      },
+      {
+        "id": 2,
+        "min": 15,
+        "max": 30,
+        "frequency": 2,
+        "timeout": 0
+      },
+      {
+        "id": 3,
+        "min": 0,
+        "max": 100,
+        "frequency": 5,
+        "timeout": 0
+      },
+      {
+        "id": 4,
+        "min": 50,
+        "max": 100,
+        "frequency": 20,
+        "timeout": 0
+      }
+    ]
+  }
+}

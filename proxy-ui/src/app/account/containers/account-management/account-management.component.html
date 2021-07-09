@@ -1,0 +1,11 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <app-account-details
+    fxFlex="0 1 calc(33.3%)"
+    *ngFor="let account of accounts;"
+    [detail]="account">
+  </app-account-details>
+  <a mat-icon-button matTooltip="Create new account" color="primary" aria-label="Add account"
+     [routerLink]="'create'">
+    <mat-icon>add_circle</mat-icon>
+  </a>
+</div>

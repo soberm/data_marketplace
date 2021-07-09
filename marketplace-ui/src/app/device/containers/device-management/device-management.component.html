@@ -1,0 +1,10 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <app-device-action-details (delete)="onDeleteDevice($event)"
+                             fxFlex="0 1 calc(33.3%)"
+                             *ngFor="let device of devices;"
+                             [detail]="device">
+  </app-device-action-details>
+  <a mat-icon-button matTooltip="Create new device" color="primary" aria-label="Add device" [routerLink]="'create'">
+    <mat-icon>add_circle</mat-icon>
+  </a>
+</div>

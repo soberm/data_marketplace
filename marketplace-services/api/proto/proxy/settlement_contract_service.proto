@@ -1,0 +1,139 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/transaction.proto";
+import "domain/deposited_event.proto";
+import "domain/settled_event.proto";
+import "domain/dispute_event.proto";
+import "domain/counter_set_event.proto";
+import "domain/counter.proto";
+import "domain/settlement.proto";
+
+message DepositRequest {
+    string contractAddress = 1;
+    uint64 value = 2;
+}
+
+message DepositResponse {
+    domain.Transaction transaction = 1;
+}
+
+message SettleTradeRequest {
+    string contractAddress = 1;
+    uint64 counter = 2;
+}
+
+message SettleTradeResponse {
+    domain.Transaction transaction = 1;
+}
+
+message ResolveDisputeRequest {
+    string contractAddress = 1;
+    uint64 counter = 2;
+}
+
+message ResolveDisputeResponse {
+    domain.Transaction transaction = 1;
+}
+
+message ResolveTimeoutRequest {
+    string contractAddress = 1;
+}
+
+message ResolveTimeoutResponse {
+    domain.Transaction transaction = 1;
+}
+
+message GetProviderCounterRequest {
+    string contractAddress = 1;
+}
+
+message GetProviderCounterResponse {
+    domain.Counter counter = 1;
+}
+
+message GetConsumerCounterRequest {
+    string contractAddress = 1;
+}
+
+message GetConsumerCounterResponse {
+    domain.Counter counter = 1;
+}
+
+message GetBrokerCounterRequest {
+    string contractAddress = 1;
+}
+
+message GetBrokerCounterResponse {
+    domain.Counter counter = 1;
+}
+
+message GetSettlementRequest {
+    string contractAddress = 1;
+}
+
+message GetSettlementResponse {
+    domain.Settlement settlement = 1;
+}
+
+message WatchDepositedEventRequest {
+    string contractAddress = 1;
+}
+
+message WatchDepositedEventResponse {
+    domain.DepositedEvent event = 1;
+}
+
+message WatchSettledEventRequest {
+    string contractAddress = 1;
+}
+
+message WatchSettledEventResponse {
+    domain.SettledEvent event = 1;
+}
+
+message WatchDisputeEventRequest {
+    string contractAddress = 1;
+}
+
+message WatchDisputeEventResponse {
+    domain.DisputeEvent event = 1;
+}
+
+message WatchCounterSetEventRequest {
+    string contractAddress = 1;
+    repeated string setter = 2;
+}
+
+message WatchCounterSetEventResponse {
+    domain.CounterSetEvent event = 1;
+}
+
+service SettlementContractService {
+    rpc Deposit (DepositRequest) returns (DepositResponse) {
+    }
+    rpc SettleTrade (SettleTradeRequest) returns (SettleTradeResponse) {
+    }
+    rpc ResolveDispute (ResolveDisputeRequest) returns (ResolveDisputeResponse) {
+    }
+    rpc ResolveTimeout (ResolveTimeoutRequest) returns (ResolveTimeoutResponse) {
+    }
+    rpc GetProviderCounter (GetProviderCounterRequest) returns (GetProviderCounterResponse) {
+    }
+    rpc GetConsumerCounter (GetConsumerCounterRequest) returns (GetConsumerCounterResponse) {
+    }
+    rpc GetBrokerCounter (GetBrokerCounterRequest) returns (GetBrokerCounterResponse) {
+    }
+    rpc GetSettlement (GetSettlementRequest) returns (GetSettlementResponse) {
+    }
+    rpc WatchDepositedEvent (WatchDepositedEventRequest) returns (stream WatchDepositedEventResponse) {
+    }
+    rpc WatchSettledEvent (WatchSettledEventRequest) returns (stream WatchSettledEventResponse) {
+    }
+    rpc WatchDisputeEvent (WatchDisputeEventRequest) returns (stream WatchDisputeEventResponse) {
+    }
+    rpc WatchCounterSetEvent (WatchCounterSetEventRequest) returns (stream WatchCounterSetEventResponse) {
+    }
+}

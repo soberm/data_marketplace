@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/account.proto";
+
+message CreateAccountRequest {
+    domain.Account account = 1;
+}
+
+message CreateAccountResponse {
+    domain.Account account = 1;
+}
+
+message FindAccountByIdRequest {
+    uint64 id = 1;
+}
+
+message FindAccountByIdResponse {
+    domain.Account account = 1;
+}
+
+message FindAccountByNameRequest {
+    string name = 1;
+}
+
+message FindAccountByNameResponse {
+    domain.Account account = 1;
+}
+
+message FindAccountsRequest {
+
+}
+
+message FindAccountsResponse {
+    domain.Account account = 1;
+}
+
+service AccountService {
+    rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {
+    }
+    rpc FindAccountById (FindAccountByIdRequest) returns (FindAccountByIdResponse) {
+    }
+    rpc FindAccountByName (FindAccountByNameRequest) returns (FindAccountByNameResponse) {
+    }
+    rpc FindAccounts (FindAccountsRequest) returns (stream FindAccountsResponse) {
+
+    }
+}

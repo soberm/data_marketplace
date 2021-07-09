@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/message.proto";
+
+message EncryptAndPushMessageRequest {
+    string brokerAddr = 1;
+    bytes publicKey = 2;
+    domain.Message message = 3;
+}
+
+message EncryptAndPushMessageResponse {
+}
+
+message DecryptAndPullMessageRequest {
+    string brokerAddr = 1;
+    uint64 tradeId = 2;
+}
+
+message DecryptAndPullMessageResponse {
+    domain.Message message = 1;
+}
+
+service CryptoMessageService {
+    rpc EncryptAndPushMessage (EncryptAndPushMessageRequest) returns (EncryptAndPushMessageResponse) {
+    }
+    rpc DecryptAndPullMessage (DecryptAndPullMessageRequest) returns (DecryptAndPullMessageResponse) {
+    }
+}

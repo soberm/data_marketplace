@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message Transaction {
+    string hash = 1;
+    bytes data = 2;
+    uint64 gas = 3;
+    uint64 gasPrice = 4;
+    int64 value = 5;
+    uint64 nonce = 6;
+}

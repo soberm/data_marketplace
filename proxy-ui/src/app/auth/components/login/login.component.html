@@ -1,0 +1,46 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <div mat-card-avatar class="login-header-image"></div>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle>Sign in to access the management console</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form #form="ngForm" (ngSubmit)="handleSubmit(form.value, form.valid)" novalidate>
+      <mat-card-content class="login-card-content">
+        <div fxLayout="row" fxLayoutGap="25px">
+          <mat-form-field fxFlex="calc(50% - 25px)">
+            <mat-label>Username</mat-label>
+            <input
+              type="text"
+              name="username"
+              required
+              #username="ngModel"
+              ngModel
+              matInput
+              placeholder="admin">
+            <mat-error *ngIf="username.errors?.required && username.dirty">Required</mat-error>
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(50% - 25px)">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              name="password"
+              required
+              #password="ngModel"
+              ngModel
+              matInput
+              placeholder="******">
+            <mat-error *ngIf="password.errors?.required && password.dirty">"Required</mat-error>
+            <mat-icon matSuffix>vpn_key</mat-icon>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="login-card-actions">
+        <button mat-button type="submit" [disabled]="form.invalid">Login</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

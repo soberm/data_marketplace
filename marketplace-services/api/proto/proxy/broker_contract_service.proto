@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/broker.proto";
+import "domain/transaction.proto";
+import "domain/created_broker_event.proto";
+import "domain/updated_broker_event.proto";
+import "domain/removed_broker_event.proto";
+
+message CreateBrokerRequest {
+    domain.Broker broker = 1;
+}
+
+message CreateBrokerResponse {
+    domain.Transaction transaction = 1;
+}
+
+message UpdateBrokerRequest {
+    domain.Broker broker = 1;
+}
+
+message UpdateBrokerResponse {
+    domain.Transaction transaction = 1;
+}
+
+message RemoveBrokerRequest {
+    string address = 1;
+}
+
+message RemoveBrokerResponse {
+    domain.Transaction transaction = 1;
+}
+
+message FindBrokerByIndexRequest {
+    int64 index = 1;
+}
+
+message FindBrokerByIndexResponse {
+    domain.Broker broker = 1;
+}
+
+message FindBrokerByAddressRequest {
+    string address = 1;
+}
+
+message FindBrokerByAddressResponse {
+    domain.Broker broker = 1;
+}
+
+message CountBrokersRequest {
+}
+
+message CountBrokersResponse {
+    int64 counter = 1;
+}
+
+message ExistsBrokerByAddressRequest {
+    string address = 1;
+}
+
+message ExistsBrokerByAddressResponse {
+    bool exists = 1;
+}
+
+message ExistsBrokerByAddressAndDeletedRequest {
+    string address = 1;
+    bool deleted = 2;
+}
+
+message ExistsBrokerByAddressAndDeletedResponse {
+    bool exists = 1;
+}
+
+message WatchCreatedBrokerEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchCreatedBrokerEventResponse {
+    domain.CreatedBrokerEvent event = 1;
+}
+
+message WatchUpdatedBrokerEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchUpdatedBrokerEventResponse {
+    domain.UpdatedBrokerEvent event = 1;
+}
+
+message WatchRemovedBrokerEventRequest {
+    repeated string addresses = 1;
+}
+
+message WatchRemovedBrokerEventResponse {
+    domain.RemovedBrokerEvent event = 1;
+}
+
+service BrokerContractService {
+    rpc CreateBroker (CreateBrokerRequest) returns (CreateBrokerResponse) {
+    }
+    rpc UpdateBroker (UpdateBrokerRequest) returns (UpdateBrokerResponse) {
+    }
+    rpc RemoveBroker (RemoveBrokerRequest) returns (RemoveBrokerResponse) {
+    }
+    rpc FindBrokerByIndex (FindBrokerByIndexRequest) returns (FindBrokerByIndexResponse) {
+    }
+    rpc FindBrokerByAddress (FindBrokerByAddressRequest) returns (FindBrokerByAddressResponse) {
+    }
+    rpc CountBrokers (CountBrokersRequest) returns (CountBrokersResponse) {
+    }
+    rpc ExistsBrokerByAddress (ExistsBrokerByAddressRequest) returns (ExistsBrokerByAddressResponse) {
+    }
+    rpc ExistsBrokerByAddressAndDeleted (ExistsBrokerByAddressAndDeletedRequest) returns (ExistsBrokerByAddressAndDeletedResponse) {
+    }
+    rpc WatchCreatedBrokerEvent (WatchCreatedBrokerEventRequest) returns (stream WatchCreatedBrokerEventResponse) {
+    }
+    rpc WatchUpdatedBrokerEvent (WatchUpdatedBrokerEventRequest) returns (stream WatchUpdatedBrokerEventResponse) {
+    }
+    rpc WatchRemovedBrokerEvent (WatchRemovedBrokerEventRequest) returns (stream WatchRemovedBrokerEventResponse) {
+    }
+}

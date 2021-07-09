@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+enum Location {
+    BR = 0;
+    EUNE = 1;
+    EUW = 2;
+    LAN = 3;
+    LAS = 4;
+    NA = 5;
+    OCE = 6;
+    RU = 7;
+    TR = 8;
+    JP = 9;
+    PH = 10;
+    SG = 11;
+    TW = 12;
+    VN = 13;
+    TH = 14;
+    KR = 15;
+    CN = 16;
+}

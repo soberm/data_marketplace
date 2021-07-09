@@ -1,0 +1,10 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <app-broker-action-details (delete)="onDeleteBroker($event)"
+                             fxFlex="0 1 calc(33.3%)"
+                             *ngFor="let broker of brokers;"
+                             [detail]="broker">
+  </app-broker-action-details>
+  <a mat-icon-button matTooltip="Create new broker" color="primary" aria-label="Add broker" [routerLink]="'create'">
+    <mat-icon>add_circle</mat-icon>
+  </a>
+</div>

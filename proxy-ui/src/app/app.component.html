@@ -1,0 +1,8 @@
+<div class="container mat-app-background">
+  <mat-toolbar color="primary">
+    <span [routerLink]="'/'">Proxy</span>
+    <span class="filler"></span>
+    <button *ngIf="isAuthenticated()" mat-button (click)="onLogout()">Logout</button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>

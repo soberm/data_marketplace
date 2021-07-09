@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package broker;
+option go_package = "marketplace-services/pkg/broker/api";
+
+import "domain/message.proto";
+
+message PushMessageRequest {
+    domain.Message message = 1;
+}
+
+message PushMessageResponse {
+}
+
+message PullMessageRequest {
+    uint64 tradeId = 1;
+}
+
+message PullMessageResponse {
+    domain.Message message = 1;
+}
+
+service MessageService {
+    rpc PushMessage (PushMessageRequest) returns (PushMessageResponse) {
+    }
+    rpc PullMessage (PullMessageRequest) returns (PullMessageResponse) {
+    }
+}

@@ -1,0 +1,25 @@
+<mat-card class="user-card">
+  <mat-card-header>
+    <div mat-card-avatar class="user-header-image"></div>
+    <mat-card-title>{{ detail.firstName + " " + detail.lastName }}</mat-card-title>
+    <mat-card-subtitle>{{ detail.addr }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="user-card-content">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <h2 class="mat-h2">Company:</h2>
+      <div>{{ detail.company }}</div>
+      <h2 class="mat-h2">E-Mail:</h2>
+      <div>{{ detail.email }}</div>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <a matTooltip="Update user" mat-icon-button aria-label="Update user" [routerLink]="'update/' + detail.addr">
+      <mat-icon>update</mat-icon>
+    </a>
+    <button (click)="handleDelete(detail)" matTooltip="Delete user" mat-icon-button aria-label="Delete user">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

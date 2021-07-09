@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message Negotiation {
+    uint64 id = 1;
+    string consumer = 2;
+    uint64 product = 3;
+    string biddingContract = 4;
+}

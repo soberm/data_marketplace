@@ -1,0 +1,8 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <app-user-action-details *ngIf="user !== undefined" [detail]="user"></app-user-action-details>
+  <a mat-icon-button *ngIf="user === undefined" matTooltip="Create new user" color="primary" aria-label="Add user"
+     [routerLink]="'create'">
+    <mat-icon>add_circle</mat-icon>
+  </a>
+</div>
+

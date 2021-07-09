@@ -1,0 +1,10 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <app-product-action-details (delete)="onDeleteProduct($event)"
+                              fxFlex="0 1 calc(33.3%)"
+                              *ngFor="let product of products;"
+                              [detail]="product">
+  </app-product-action-details>
+  <a mat-icon-button matTooltip="Create new product" color="primary" aria-label="Add product" [routerLink]="'create'">
+    <mat-icon>add_circle</mat-icon>
+  </a>
+</div>

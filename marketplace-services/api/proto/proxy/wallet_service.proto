@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package proxy;
+option go_package = "marketplace-services/pkg/proxy/api";
+
+import "domain/wallet.proto";
+
+message CreateWalletRequest {
+    domain.Wallet wallet = 1;
+}
+
+message CreateWalletResponse {
+    domain.Wallet wallet = 1;
+}
+
+message FindWalletByIdRequest {
+    uint64 id = 1;
+}
+
+message FindWalletByIdResponse {
+    domain.Wallet wallet = 1;
+}
+
+message FindWalletByAccountIdRequest {
+    uint64 id = 1;
+}
+
+message FindWalletByAccountIdResponse {
+    domain.Wallet wallet = 1;
+}
+
+service WalletService {
+    rpc CreateWallet (CreateWalletRequest) returns (CreateWalletResponse) {
+    }
+    rpc FindWalletById (FindWalletByIdRequest) returns (FindWalletByIdResponse) {
+    }
+    rpc FindWalletByAccountId (FindWalletByAccountIdRequest) returns (FindWalletByAccountIdResponse) {
+    }
+}

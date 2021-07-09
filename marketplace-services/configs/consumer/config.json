@@ -1,0 +1,20 @@
+{
+  "proxyConfig": {
+    "address": "localhost",
+    "port": 25566,
+    "username": "michael",
+    "password": "12345678",
+    "account": "0x97314ee3829b10082d9dffe184ad6abd78e43134"
+  },
+  "loggingConfig": {
+    "verbosity": 4
+  },
+  "searchConfig": {
+    "brokerLocation": 6,
+    "dataType": "light",
+    "minCost": 0,
+    "maxCost": 20,
+    "minFrequency": 1,
+    "maxFrequency": 10
+  }
+}

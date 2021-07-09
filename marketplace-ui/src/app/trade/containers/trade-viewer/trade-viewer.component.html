@@ -1,0 +1,7 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <app-trade-details
+    fxFlex="0 1 calc(33.3%)"
+    *ngFor="let trade of trades;"
+    [detail]="trade">
+  </app-trade-details>
+</div>

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "marketplace-services/pkg/domain";
+
+message Wallet {
+    uint64 id = 1;
+    uint64 userId = 2;
+    string passphrase = 3;
+    bytes address = 4;
+    string filePath = 5;
+    bytes publicKey = 6;
+}

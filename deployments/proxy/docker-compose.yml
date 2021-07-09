@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  proxy:
+    image: proxy
+    restart: always
+    container_name: proxy
+    ports:
+      - 25566:25566
+    volumes:
+      - "./configs/proxy/config.json:/app/configs/proxy/config.json"
+      - "./tmp:/app/tmp"
+  envoy:
+    image: envoyproxy/envoy
+    restart: always
+    container_name: envoy
+    ports:
+      - 8080:8080
+    volumes:
+      - "./configs/envoy/envoy.yaml:/etc/envoy/envoy.yaml"
+  proxy-ui:
+    image: proxy-ui
+    restart: always
+    container_name: proxy-ui
+    ports:
+      - 8082:80
+    depends_on:
+      - proxy
+      - envoy

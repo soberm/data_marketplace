@@ -1,0 +1,27 @@
+<mat-card class="broker-card">
+  <mat-card-header>
+    <div mat-card-avatar class="broker-header-image"></div>
+    <mat-card-title>{{ detail.name }}</mat-card-title>
+    <mat-card-subtitle>{{ detail.addr }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="broker-card-content">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <h2 class="mat-h2">User:</h2>
+      <div>{{ detail.user }}</div>
+      <h2 class="mat-h2">Host Address:</h2>
+      <div>{{ detail.hostAddr }}</div>
+      <h2 class="mat-h2">Location:</h2>
+      <div>{{ locations[detail.location] }}</div>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <a matTooltip="Update broker" mat-icon-button aria-label="Update broker" [routerLink]="'update/' + detail.addr">
+      <mat-icon>update</mat-icon>
+    </a>
+    <button (click)="handleDelete(detail)" matTooltip="Delete broker" mat-icon-button aria-label="Delete broker">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
